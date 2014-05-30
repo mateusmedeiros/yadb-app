@@ -22,10 +22,10 @@ for filename in os.listdir(model_dir):
                            filename[:-3])
   for name in dir(model_module):
     item = getattr(model_module, name)
-    if not isinstance(item, (type, types.ClassType)):
+    if not isinstance(item, type):
       continue
     # Found a model, bring into the module namespace.
-    exec "%s = item" % name
+    exec ("%s = item" % name)
     model_names.append(name)
 
 # Hide everything other than the classes from other modules.
